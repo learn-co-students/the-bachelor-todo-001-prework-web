@@ -1,4 +1,3 @@
-require 'pry'
 def get_first_name_of_season_winner(data, season)
   data[season].each do |contestant_hash|
     if contestant_hash["status"].downcase == "winner"
@@ -30,5 +29,11 @@ def count_contestants_by_hometown(data, hometown)
 end
 
 def get_occupation(data, hometown)
-  # code here
+  data.each do |season, contestants|
+    contestants.each do |contestant_hash|
+      if contestant_hash["hometown"] == hometown
+        return contestant_hash['occupation']
+      end
+    end
+  end
 end
