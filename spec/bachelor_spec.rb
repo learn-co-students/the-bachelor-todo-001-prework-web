@@ -22,11 +22,11 @@ describe "bachelor" do
     end
 
     it "returns 'Brooke Burchette' when passed data and the string 'Community Organizer'" do
-      expect(get_contestant_name(data, "Community Organizer")).to eq("Brooke Burchettel")
+      expect(get_contestant_name(data, "Community Organizer")).to eq("Brooke Burchette")
     end
 
     it "returns 'Dianna Martinez' when passed data and the string 'Nonprofit director'" do
-      expect(get_contestant_name(data, "Nonprofit director")).to eq("Dianna Martinezl")
+      expect(get_contestant_name(data, "Nonprofit director")).to eq("Dianna Martinez")
     end
   end
 
