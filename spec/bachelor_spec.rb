@@ -8,10 +8,10 @@ describe "bachelor" do
     end
 
     it "returns 'Courtney' when passed the data and 'season 10'" do
-      expect(get_first_name_of_season_winner(data, "season 16")).to eq("Tessa")
+      expect(get_first_name_of_season_winner(data, "season 16")).to eq("Courtney")
     end
 
-    it "returns 'Courtney' when passed the data and 'season 10'" do
+    it "returns 'Emily' when passed the data and 'season 10'" do
       expect(get_first_name_of_season_winner(data, "season 15")).to eq("Emily")
     end
   end
@@ -22,11 +22,11 @@ describe "bachelor" do
     end
 
     it "returns 'Brooke Burchette' when passed data and the string 'Community Organizer'" do
-      expect(get_contestant_name(data, "Community Organizer")).to eq("Brooke Burchettel")
+      expect(get_contestant_name(data, "Community Organizer")).to eq("Brooke Burchette")
     end
 
     it "returns 'Dianna Martinez' when passed data and the string 'Nonprofit director'" do
-      expect(get_contestant_name(data, "Nonprofit director")).to eq("Dianna Martinezl")
+      expect(get_contestant_name(data, "Nonprofit director")).to eq("Dianna Martinez")
     end
   end
 
@@ -59,3 +59,4 @@ describe "bachelor" do
   end
 
 end
+
