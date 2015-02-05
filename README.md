@@ -72,7 +72,7 @@ Take a look at her questions:
 2. What is the name of the woman whose occupation is cruise ship singer?
 3. How many contestants have been from Brooklyn, NY over the seasons 9 - 19?
 4. What was the occupation of the contestant from Cranston, Rhode Island?
-5. What is the average age of the contestants from season 12?
+5. What is the average age (rounded to the closest whole number) of the contestants from season 12?
 
 Run your testing suite to get started.
 

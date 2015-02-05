@@ -40,7 +40,7 @@ describe "bachelor" do
     end
 
     it "returns 6 when passed data and the string 'San Diego, CA'" do
-      expect(count_contestants_by_hometown(data, "San Diego, CA")).to eq(4)
+      expect(count_contestants_by_hometown(data, "San Diego, California")).to eq(5)
     end
   end
 
@@ -55,6 +55,18 @@ describe "bachelor" do
 
     it "returns 'Health Club Manager' when passed data and the string 'Troutdale, Oregon'" do
       expect(get_occupation(data, "Troutdale, Oregon")).to eq("Health Club Manager")
+    end
+  end
+
+  describe "#get_average_age_for_season" do
+    it "returns 26 when passed the data and the string 'season 10'" do
+      expect(get_average_age_for_season(data, "season 10")).to eq(26)
+    end
+    it "returns 26 when passed the data and the string 'season 11'" do
+      expect(get_average_age_for_season(data, "season 11")).to eq(27)
+    end
+    it "returns 26 when passed the data and the string 'season 12'" do
+      expect(get_average_age_for_season(data, "season 12")).to eq(26)
     end
   end
 
