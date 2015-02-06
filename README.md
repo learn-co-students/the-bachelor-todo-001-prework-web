@@ -76,6 +76,8 @@ Take a look at her questions:
 
 Run your testing suite to get started.
 
+**Make sure to run `bundle` from within the lab's directory before you get started.**
+
 ## Resources
 
 * [Ruby's each method on arrays](http://www.ruby-doc.org/core-2.2.0/Array.html#method-i-each)
