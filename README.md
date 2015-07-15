@@ -19,6 +19,7 @@ You decided to [scrape](http://ruby.bastardsbook.com/chapters/html-parsing/) (mo
 The data you scraped is a hash, where the keys are the season number and the values are contestant arrays. Within these arrays, each contestant has their own hash with the following key, value pairs:
 
 * Name
+* Age
 * Hometown
 * Status (ex. values are "Winner", "Eliminated Week 2", etc.)
 * Occupation
