@@ -86,7 +86,7 @@ Run your testing suite to get started. Then, follow the test output together wit
 3. Build a method, `count_contestants_by_hometown`, that takes in two arguments––the data hash and a string of a hometown. This method should return a counter of the number of contestants who are from that hometown. 
   * How will you keep track of contestants from a particular hometown? Think back to our looping lessons in which we set a counter variable equal to 0 and incremented that counter under certain conditions. 
 4. Build a method `get_occupation`, that takes in two arguments––the data hash and a string of a hometown. It returns the occupation of the first contestant who hails from that hometown.
-5. Build a method, `get_average_age_for_season`, that takes in two arguments––the data hash and a string of a season. Iterate through the hash and return the average of all of the contestants for that season. 
+5. Build a method, `get_average_age_for_season`, that takes in two arguments––the data hash and a string of a season. Iterate through the hash and return the average age of all of the contestants for that season. 
   * How will you iterate down into the level of the hash that contains each contestant's age?
   * How will you collect the ages of each contestant and average them? Remember that the values of the "age" keys are not integers, they are strings. How do we convert strings to integers in Ruby?
 
