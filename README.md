@@ -88,7 +88,8 @@ Run your testing suite to get started. Then, follow the test output together wit
 4. Build a method `get_occupation`, that takes in two arguments––the data hash and a string of a hometown. It returns the occupation of the first contestant who hails from that hometown.
 5. Build a method, `get_average_age_for_season`, that takes in two arguments––the data hash and a string of a season. Iterate through the hash and return the average age of all of the contestants for that season. 
   * How will you iterate down into the level of the hash that contains each contestant's age?
-  * How will you collect the ages of each contestant and average them? Remember that the values of the "age" keys are not integers, they are strings. How do we convert strings to integers in Ruby?
+  * How will you collect the ages of each contestant and average them? Remember that the values of the "age" keys are not numbers, they are strings. How do we convert strings to numbers in Ruby?
+  * Remember that dividing *integers* in Ruby always rounds down. In this case though, we want the normal math sort of rounding (where .5 and higher rounds *up*), instead. Consider the difference between `to_f` and `to_i`.
 
 
 ## Resources
@@ -97,3 +98,4 @@ Run your testing suite to get started. Then, follow the test output together wit
 * [Ruby's each method on hashes](http://www.ruby-doc.org/core-2.2.0/Hash.html#method-i-each)
 * [Ruby's hsh[key] → value method](http://ruby-doc.org/core-2.1.5/Hash.html#method-i-5B-5D)
 * [JSON Data](http://json.org/)
+* [Rounding in Ruby](http://ruby-doc.org/core-2.2.0/Float.html#method-i-round)
