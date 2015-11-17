@@ -41,6 +41,7 @@ def get_occupation(data, hometown)
     contestants.each do |cont_hash|
       if cont_hash["hometown"] == hometown
         return cont_hash["occupation"]
+        break
       end
     end
   end
@@ -58,9 +59,5 @@ def get_average_age_for_season(data, season)
     end
   end
   average = age_total.to_f / num_of_cont.to_f
-  if average.to_s[3].to_i >= 5
-    average.ceil
-  else
-    average.to_i
-  end
+  average.to_s[3].to_i >= 5 ? average.ceil : average.to_i
 end
