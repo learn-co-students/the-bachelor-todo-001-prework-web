@@ -1,27 +1,23 @@
 def get_first_name_of_season_winner(data, season)
-  first_name = ""
   data.each do |season_num, contestants|
     if season_num == season
       contestants.each do |cont_hash|
         if cont_hash["status"] == "Winner"
-          first_name = cont_hash["name"].split(" ")[0]
+          return cont_hash["name"].split(" ")[0]
         end
       end
     end
   end
-  first_name
 end
 
 def get_contestant_name(data, occupation)
-  name = ""
   data.each do |season_num, contestants|
     contestants.each do |cont_hash|
       if cont_hash["occupation"] == occupation
-        name = cont_hash["name"]
+        return cont_hash["name"]
       end
     end
   end
-  name
 end
 
 def count_contestants_by_hometown(data, hometown)
