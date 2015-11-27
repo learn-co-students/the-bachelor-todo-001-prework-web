@@ -9,7 +9,15 @@ def get_first_name_of_season_winner(data, season)
 end
 
 def get_contestant_name(data, occupation)
-  # code here
+  name = nil
+  data.each do |key, val|
+    val.each do |key, val|
+      key.each do |key, val| key == "name" ? name = val : nil
+      return name if key == "occupation" && val == occupation
+      end
+    end
+  end
+  name
 end
 
 def count_contestants_by_hometown(data, hometown)
