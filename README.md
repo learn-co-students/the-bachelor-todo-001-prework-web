@@ -99,3 +99,5 @@ Run your testing suite to get started. Then, follow the test output together wit
 * [Ruby's hsh[key] → value method](http://ruby-doc.org/core-2.1.5/Hash.html#method-i-5B-5D)
 * [JSON Data](http://json.org/)
 * [Rounding in Ruby](http://ruby-doc.org/core-2.2.0/Float.html#method-i-round)
+
+<a href='https://learn.co/lessons/the-bachelor-todo' data-visibility='hidden'>View this lesson on Learn.co</a>
