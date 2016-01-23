@@ -55,6 +55,5 @@ def get_average_age_for_season(data, season)
       end
     end
   end
-  average = ages.inject(:+)/ages.length
-  average.round
+  average = (ages.inject(:+)/ages.length).round
 end
