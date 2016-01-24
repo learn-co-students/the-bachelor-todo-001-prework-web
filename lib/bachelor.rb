@@ -1,68 +1,48 @@
-require 'json'
+#require 'json'
+#data = JSON.parse(File.read('spec/fixtures/contestants.json'))
 
-data = JSON.parse(File.read('spec/fixtures/contestants.json'))
 def get_first_name_of_season_winner(data, season)
-  winner = nil
-  data.each do |season_data, contestant_data|
-    if season_data == season
-      contestant_data.collect do |contestant|
-	if contestant["status"] == "Winner"
-	  winner = contestant["name"].split[0]
-        end
-      end
-    end 
-  end
-  winner
+  selected_season_data = get_season_data(data, season) 
+  winner = get_winner_by_season(selected_season_data)
+  winner[0]["name"].split(" ").first
+end
+
+def get_winner_by_season(season)
+  season.select { |data| data.fetch("status") == "Winner"}
 end
 
 def get_contestant_name(data, occupation)
-  return_name = [] 
-  data.each do |season, contestant_data|
-    contestant_data.each do |contestant|
-      if contestant["occupation"].strip == occupation.strip
-         return_name.push(contestant["name"])
-      end
-    end
-  end
-  return return_name.join(", ")
+  contestants = get_all_contestants(data) 
+  contestant_with_occupation = contestants.select{|contestant| contestant["occupation"] == occupation}
+  contestant_with_occupation[0]["name"]
 end
 
 def count_contestants_by_hometown(data, hometown)
-  contestant_name = []
-  data.each do |season, contestant_data|
-    contestant_data.each do |contestant|
-      if contestant["hometown"] == hometown
-	contestant_name.push(contestant["name"])
-      end
-    end
-  end
-  return contestant_name.count
+  contestants = get_all_contestants(data) 
+  contestant_from_hometown = contestants.select{|contestant| contestant["hometown"] == hometown}
+  contestant_from_hometown.size
 end
-
 
 def get_occupation(data, hometown)
-  contestant_occupation = []
-  data.each do |seacon, contestant_data|
-    contestant_data.each do |contestant|
-     if contestant["hometown"] == hometown
-	contestant_occupation.push(contestant["occupation"])
-     end
-    end
-  end
-  return contestant_occupation[0]
+  contestants = get_all_contestants(data)
+  contestants_from_hometown = contestants.select{|contestant| contestant["hometown"] == hometown}
+  contestants_from_hometown[0]["occupation"]
 end
 
-def get_average_age_for_season(data, select_season)
-  ages = []
-  data.each do |season, contestant_data|
-    if season == select_season
-      contestant_data.each do |contestant|
-        ages.push(contestant["age"].to_f)
-      end
-    end
-  end
-  average_age = ( (ages.reduce(:+)/ages.size) + 0.49).to_i
+def get_average_age_for_season(data, season)
+  selected_season_data = get_season_data(data, season) 
+  total_age = selected_season_data.map{|contestant| contestant["age"].to_i}
+  average_age = (total_age.reduce(:+) /selected_season_data.size.to_f).round
 end
 
 
+def get_season_data(data, season)
+  data[season]
+end
+
+def get_all_contestants(data)
+  contestants_array = []
+  data.map{|k,v| contestants_array << v}
+  contestants_array.flatten
+end
 
