@@ -1,5 +1,5 @@
 def get_first_name_of_season_winner(data, season)
-  winner = data[season].find {|contestant| contestant.fetch("status") == "Winner"}
+  winner = data.fetch(season).find {|contestant| contestant.fetch("status") == "Winner"}
   winner.fetch("name").split(" ")[0]
 end
 
@@ -17,8 +17,8 @@ def get_occupation(data, hometown)
 end
 
 def get_average_age_for_season(data, season)
-  age_total = data[season].inject(0) do |age_total, contestant|
-    age_total + contestant["age"].to_f
+  age_total = data.fetch(season).inject(0) do |age_total, contestant|
+    age_total + contestant.fetch("age").to_f
   end
   (age_total/(data.fetch(season).size)).round
 end
