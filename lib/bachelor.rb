@@ -1,79 +1,54 @@
 require 'pry'
 
+def get_season_data(data, season)
+  data.fetch(season)
+  #returns all contestants and their data from season in array
+end
+
+
+def get_all_contestant_data(data)
+  data.values.flatten
+  #returns all contestant data of all seasons
+end 
+
+
 def get_first_name_of_season_winner(data, season)
-  name = ''
-  data.each do |season_key, contestants|
-    if season == season_key
-      contestants.each do |contestant_data|
-        contestant_data.each do |key, value|
-          if value == "Winner"
-            name << contestant_data["name"]
-          end
-        end
-      end
-    end
-  end
-  name.split(" ")[0]
+  season_data = get_season_data(data, season)
+  winner_hash = season_data.find do |contestant_hash| 
+    contestant_hash.fetch("status") == "Winner"
+  end   #returns the winner hash data
+  winner_hash.fetch("name").split(" ").first
+  #returns first name of winner 
 end
 
 
 def get_contestant_name(data, occupation)
-  name = ''
-  data.each do |season, contestants|
-    contestants.each do |data_items|
-      data_items.each do |key, value|
-        if value == occupation
-          name << data_items["name"]
-        end
-      end
-    end
-  end
-  name
+  all_contestants = get_all_contestant_data(data)
+  all_contestants.find do |contestant_hash| 
+    contestant_hash.fetch("occupation") == occupation
+  end.fetch("name") #returns the name of the first contestant w/ occupation
 end
-
-#data = { "season 10"=>[{"name" => "Nikki Ferrell","age"=> "26","hometown"=> "Kearney, Missouri","occupation"=> "Pediatric Nurse","status"=> "Winner"},{"name"=> "Paige Vigil","age"=> "25","hometown"=> "Cranston, Rhode Island","occupation"=> "Jumbotron Operator","status"=> "Eliminated in episode 1"}]}
-#get_first_name_of_season_winner(data, "season 10")
 
 def count_contestants_by_hometown(data, hometown)
-  counter = 0
-  data.each do |season, contestants|
-    contestants.each do |data_items|
-      data_items.each do |key, value|
-        if value == hometown
-          counter += 1
-        end
-      end
-    end
-  end
-  counter
-end
+    all_contestants = get_all_contestant_data(data)
+    all_contestants.find_all do |contestant_hash| 
+      contestant_hash["hometown"] == hometown
+    end.size #returns number of contestants in hometown 
+end 
 
 def get_occupation(data, hometown)
-  occupation = []
-  data.each do |season, contestants|
-    contestants.each do |data_items|
-      data_items.each do |key, value|
-        if value == hometown
-          occupation << data_items["occupation"]
-        end
-      end
-    end
-  end
-  occupation[0].to_s
-end
+    all_contestants = get_all_contestant_data(data)
+    all_contestants.find_all do |contestant_hash| 
+      contestant_hash["hometown"] == hometown
+    end[0]["occupation"] 
+end 
+
 
 def get_average_age_for_season(data, season)
-  ages = []
-  data.each do |season_key, contestants|
-    if season_key == season
-      contestants.each do |data_items|
-        data_items.each do |key, value|
-          if key == "age"
-            ages << value.to_i
-          end
-        end
-      end
-    end
+  season_data = get_season_data(data, season)
+  age_array = season_data.each_with_object([]) do |contestant_hash, age_array|
+    age_array << contestant_hash["age"]  
   end
-  (ages.inject{ |sum, el| sum + el }.to_f / ages.size).round
+  (age_array.inject(0.0) {|sum, age| sum += age.to_i} / age_array.size).round
 end
+
