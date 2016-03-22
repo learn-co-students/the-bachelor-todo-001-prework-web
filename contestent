@@ -1,0 +1,11 @@
+
+[1mFrom:[0m /home/nitrous/code/labs/the-bachelor-todo-001-prework-web/lib/bachelor.rb @ line 7 Object#get_first_name_of_season_winner:
+
+     [1;34m4[0m: [32mdef[0m [1;34mget_first_name_of_season_winner[0m(data, season)
+     [1;34m5[0m:   data[season].each [32mdo[0m |contestent|
+     [1;34m6[0m:     contestent.each [32mdo[0m |attribute,stat|
+ =>  [1;34m7[0m:   binding.pry
+     [1;34m8[0m:     [32mend[0m
+     [1;34m9[0m:   [32mend[0m
+    [1;34m10[0m: [32mend[0m
+
