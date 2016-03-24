@@ -108,5 +108,3 @@ if counter != 0
 end
 average
 end
-
-get_average_age_for_season(data, "season 30")
