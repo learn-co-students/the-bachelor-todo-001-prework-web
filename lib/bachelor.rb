@@ -1,14 +1,8 @@
 def get_first_name_of_season_winner(data, season)
   # code here
-  data.each do |season_number, contestants|
-    if season_number == season
-      contestants.each do |contestant|
-        contestant.each do |key, value|
-          if value == "Winner"
-            return contestant["name"].split[0]
-          end
-        end
-      end
+  data[season].each do |contestant_hash|
+    if contestant_hash["status"].downcase == "winner"
+      return contestant_hash["name"].split(" ").first
     end
   end
 end
@@ -17,11 +11,9 @@ def get_contestant_name(data, occupation)
   # code here
   data.each do |season, contestants|
     contestants.each do |contestant|
-        contestant.each do |key, value|
-          if value == occupation
-            return contestant["name"]
-          end
-        end
+      if contestant["occupation"] == occupation
+        return contestant["name"]
+      end
     end
   end
 end
@@ -31,11 +23,9 @@ def count_contestants_by_hometown(data, hometown)
   hometown_counter = 0
   data.each do |season, contestants|
     contestants.each do |contestant|
-        contestant.each do |key, value|
-          if value == hometown
-            hometown_counter += 1
-          end
-        end
+      if contestant["hometown"] == hometown
+        hometown_counter += 1
+      end
     end
   end
   hometown_counter
@@ -43,33 +33,22 @@ end
 
 def get_occupation(data, hometown)
   # code here
-    data.each do |season, contestants|
+  data.each do |season, contestants|
     contestants.each do |contestant|
-        contestant.each do |key, value|
-          if value == hometown
-            return contestant["occupation"]
-          end
-        end
+      if contestant["hometown"] == hometown
+        return contestant["occupation"]
+      end
     end
   end
 end
 
 def get_average_age_for_season(data, season)
   # code here
-  total_age = 0
-  number_of_contestants = 0
-  data.each do |season_number, contestants|
-    if season_number == season
-      contestants.each do |contestant|
-        number_of_contestants += 1
-        contestant.each do |key, value|
-          if key == "age"
-             total_age += value.to_f
-          end
-        end
-      end
-    end
+  age_total = 0
+  num_of_contestants = 0
+  data[season].each do |contestant|
+    age_total += (contestant["age"]).to_f
+    num_of_contestants += 1
   end
-  average_age_for_season = total_age/number_of_contestants
-  average_age_for_season.round
+  (age_total / num_of_contestants).round(0)
 end
