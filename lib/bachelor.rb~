@@ -67,7 +67,7 @@ def get_average_age_for_season(data, season)
 	data[season].each do |_|
 		_.each do |attrib,value|
 			if attrib == "age"
-				final_a += value.to_f
+				final_a += attrib.to_f
 				final_a_a << 1
 			end
 		end
