@@ -35,26 +35,30 @@ def count_contestants_by_hometown(data, hometown)
   return shared_home.count
 end
 
-def get_occupation(data, count_contestants_by_hometownetown)
-  entry = count_contestants_by_hometownetown.split(",")
-  entry_name = entry.first
-  entry_location = entry.last
-  puts entry_name
-  puts entry_location
-  winner = []
+def get_occupation(data, hometown)
+  shared_home = []
   data.each do |seasons, contestants|
     contestants.each do |contestant, information|
-      if contestant["name"] == entry_name
-        winner << contestant["occupation"]
+      if contestant["hometown"] == hometown
+        shared_home << contestant
       else
+        #pass
       end
     end
   end
-  return winner
+  return shared_home.first["occupation"]
 end
 
 def get_average_age_for_season(data, season)
-  # code here
+  ages = []
+  total = 0
+  data[season].each do |contestant, contestant_data|
+    ages << contestant["age"].to_f
+  end
+  for i in ages
+    total += i
+  end
+  return (total/ages.count).round(0)
 end
 
 
