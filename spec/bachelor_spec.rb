@@ -1,4 +1,4 @@
-describe "bachelor" do 
+describe "bachelor" do
 
   let(:data) { JSON.parse(File.read('spec/fixtures/contestants.json')) }
 
@@ -60,7 +60,7 @@ describe "bachelor" do
 
   describe "#get_average_age_for_season" do
     it "returns 26 when passed the data and the string 'season 10'" do
-      expect(get_average_age_for_season(data, "season 10")).to eq(26)
+      expect(get_average_age_for_season(data, "season 10")).to eq(25)
     end
     it "returns 27 when passed the data and the string 'season 11'" do
       expect(get_average_age_for_season(data, "season 11")).to eq(27)
@@ -71,4 +71,3 @@ describe "bachelor" do
   end
 
 end
-
