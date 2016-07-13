@@ -54,19 +54,19 @@ def get_average_age_for_season(data, season)
   result =  []
   total = 0.0
   average = 0
-  data.collect do |season_num, contestant_data|
-    if season_num == season
-      contestant_data.collect do |contestant_key, contestant_data_value|
-        result << contestant_key["age"]
-        result = result.collect do |num|
-          num.to_i
+    data.collect do |season_num, contestant_data|
+      if season_num == season
+        contestant_data.collect do |contestant_key, contestant_data_value|
+          result << contestant_key["age"]
+          result = result.collect do |num|
+            num.to_i
+          end
         end
-      end
           result.each do |num|
             total += num
           end
-          average = total / result.length
-        end
-  end
+        average = total / result.length
+      end
+    end
   average.round
 end
