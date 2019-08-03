@@ -91,6 +91,16 @@ looks and behaves just like a Ruby hash. You'll encounter JSON much more in the
 future when you begin working with scraping data from websites, getting data
 from APIs and even building your own APIs.
 
+> **Note**: When parsing JSON, we have the [option][] to have the parser
+> automatically convert the String keys into symbols where it can. However, in
+> this lab, we will leave the original String keys as is. When you are working
+> with the full data set, for instance, you should be able to write something
+> like `data["season 10"][0]["name"]` instead of `data[:"season 30"][0][:name]`.
+> This is different than Ruby's default behavior where declaring a hash key as a
+> String will result it in being converted to a Symbol.
+
+[option]: https://ruby-doc.org/stdlib-2.6.3/libdoc/json/rdoc/JSON.html#method-i-parse-21
+
 ### Building our Methods
 
 Run `learn` started. Then, follow the test output together with the instructions
